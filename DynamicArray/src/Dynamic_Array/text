@@ -1,0 +1,28 @@
+
+	int[] data;
+	int size;
+
+	public DArray() {
+		size = 0;
+		data = new int[1];
+	}
+
+	public int get(int index) {
+		return data[index];
+	}
+
+	public void put(int element) {
+		ensurCapacity(size++);
+		data[size++] = element;
+	}
+
+	public void ensurCapacity(int minCapacity) {
+		int odlCapacity = data.length;
+		if (minCapacity > odlCapacity) {
+			int newCapacity = odlCapacity * 2;
+			if (newCapacity < minCapacity) {
+				newCapacity = minCapacity;
+			}
+			data = Arrays.copyOf(data, newCapacity);
+		}
+	}
